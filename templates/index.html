@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (your existing head content) ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAM MESSAGE DETECTION</title>
+    <style>
+        /* Styles for the page */
+        body {
+            background-color: #0e101c; /* Ubah warna latar belakang */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styles for the chat container */
+        .chat-container {
+            max-width: 800px; /* Lebar kontainer diperbesar */
+            width: 80%; /* Persentase lebar kontainer */
+            margin: 20px auto; /* Posisi tengah dengan margin atas dan bawah 20px */
+            border: 1px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Styles for the chat header */
+        .chat-header {
+            background-color: #31304D;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column-reverse; /* Display messages in reverse order */
+        }
+
+        /* Styles for user and bot messages */
+        .user-message, .bot-message {
+            background-color: #31304D;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 5px;
+            max-width: 80%;
+        }
+
+        /* Styles for user message */
+        .user-message {
+            align-self: flex-end;
+        }
+
+        /* Styles for bot message */
+        .bot-message {
+            align-self: flex-start;
+        }
+
+        /* Styles for the chat input */
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+        }
+
+        /* Styles for the textarea */
+        textarea {
+            flex: 1;
+            height: 60px;
+            resize: none;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #31304D;
+        }
+
+        /* Styles for the button */
+        button {
+            padding: 12px;
+            background-color: #1D5B79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chat container -->
+    <div class="chat-container">
+        <!-- Chat header -->
+        <div class="chat-header">
+            <h1>SPAM MESSAGE DETECTION</h1>
+        </div>
+
+        <!-- Chat messages -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+
+        <!-- Chat input -->
+        <div class="chat-input">
+            <textarea name="user_input" id="userInput" placeholder="Type your message..."></textarea>
+            <button type="button" onclick="sendMessage()">Send</button>
+        </div>
+
+        <!-- Add this form to allow file upload -->
+        <form onsubmit="event.preventDefault(); sendMessage();" enctype="multipart/form-data">
+            <input type="file" id="fileInput" accept=".pdf">
+            <button type="submit">Upload and Detect</button>
+        </form>
+    </div>
+
+    <!-- Script for sending messages -->
+    <script>
+        function sendMessage() {
+            var userMessage = document.getElementById('userInput').value;
+            var chatMessages = document.getElementById('chatMessages');
+        
+            // Check if the message is a file upload
+            if (userMessage === "File Upload") {
+                // ... (kode file upload)
+            } else {
+                // Simulate bot response (replace with actual response from your backend)
+                var botResponse = 'Spam';
+        
+                // Append bot response to chat
+                var botDiv = document.createElement('div');
+                botDiv.className = 'bot-message';
+                botDiv.textContent = 'Bot: ' + botResponse;
+                chatMessages.appendChild(botDiv);
+        
+                // Append user message to chat
+                var userDiv = document.createElement('div');
+                userDiv.className = 'user-message';
+                userDiv.textContent = 'You: ' + userMessage;
+                chatMessages.appendChild(userDiv);
+        
+                // Clear input
+                document.getElementById('userInput').value = '';
+            }
+        }
+        
+    </script>
+
+    <!-- ... (your existing body content) ... -->
+</body>
+</html>
