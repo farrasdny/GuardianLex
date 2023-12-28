@@ -27,16 +27,25 @@ def predict(text):
     return prediction, confidence
 
 def main():
-    # Center-aligned title using HTML and CSS
+    # Center-aligned title and subtitle using HTML and CSS
     st.markdown("""
         <style>
             .title {
                 text-align: center;
+                font-size: 60px;
+            }
+            .subtitle {
+                text-align: center;
+                font-style: italic;
+                font-size: 20px;
+                margin-top: -30px;
+                margin-bottom: 50px;
             }
         </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("<h1 class='title'>Spam Message Detection</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>GuardianLex</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 class='subtitle'>Spam Message Detection</h2>", unsafe_allow_html=True)
 
     # Sidebar for file upload
     uploaded_file = st.file_uploader("Upload a Dataset CSV file", type="csv")
